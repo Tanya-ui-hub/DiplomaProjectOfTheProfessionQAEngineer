@@ -1,3 +1,5 @@
+# DiplomaProjectOfTheProfessionQAEngineer [![Build status](https://ci.appveyor.com/api/projects/status/kdh5ky7tuqt4vm38?svg=true)](https://ci.appveyor.com/project/Tanya-ui-hub/diplomaprojectoftheprofessionqaengineer)
+
 # Дипломный проект профессии «Тестировщик»
 
 Дипломный проект представляет собой автоматизацию тестирования комплексного сервиса, взаимодействующего с СУБД и API
