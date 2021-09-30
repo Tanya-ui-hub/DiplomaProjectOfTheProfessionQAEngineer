@@ -27,4 +27,5 @@
 
 ### Техническая часть
 
-Само приложение расположено в файле [`aqa-shop.jar`](artifacts/aqa-shop.jar) и запускается стандартным способом `java -jar artifacts/aqa-shop.jar` на порту 8080.
+* Ввести в терминале "IntelliJ IDEA" команду  `java -jar artifacts/aqa-shop.jar` на порту 8080.
+* Проверить запуск приложения по адресу "http://localhost:8080/"
