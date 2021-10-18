@@ -32,11 +32,6 @@ public class PaymentByCardTest {
     }
 
     @Test
-    void downloadFormPaymentByCard() {
-        offerPage.payByDebitCard();
-    }
-
-    @Test
     void shouldPaymentByDebitCardWithTheStatusAPPROVED() {
         var payForm = offerPage.payByDebitCard();
         var approvedInfo = DataHelper.getApprovedCardInfo();
