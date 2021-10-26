@@ -8,13 +8,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
 import ru.netology.data.SQLHelper;
-import ru.netology.pages.OfferPage;
+import ru.netology.entities.StartingPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentByCardTest {
-    OfferPage offerPage = new OfferPage();
+    StartingPage startingPage = new StartingPage();
 
     @BeforeAll
     static void setUpAll() {
@@ -33,7 +33,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldPaymentByDebitCardWithTheStatusAPPROVED() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var approvedInfo = DataHelper.getApprovedCardInfo();
         payForm.fillingForm(approvedInfo);
         payForm.checkOperationIsApproved();
@@ -43,7 +43,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldPaymentByDebitCardWithTheStatusDECLINED() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var declinedInfo = DataHelper.getDeclinedCardInfo();
         payForm.fillingForm(declinedInfo);
         payForm.checkErrorNotification();
@@ -54,7 +54,7 @@ public class PaymentByCardTest {
     //Поле "Номер карты"
     @Test
     void shouldSendAnEmptyForm() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var emptyFields = DataHelper.getEmptyFields();
         payForm.fillFormNoSendRequest(emptyFields);
         payForm.checkWrongFormat();
@@ -63,7 +63,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldCheckTheInvalidCard() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidCardNumber = DataHelper.getInvalidCardNumberInfo();
         payForm.fillingForm(invalidCardNumber);
         payForm.checkErrorNotification();
@@ -71,7 +71,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldCheckTheInvalidCard1() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidCardNumber = DataHelper.getInvalidCardNumberInfo1();
         payForm.fillingForm(invalidCardNumber);
         payForm.checkErrorNotification();
@@ -79,7 +79,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterTheCardNumberLessThan16Characters() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidFormatCard = DataHelper.getInvalidCardNumberInfo2();
         payForm.fillFormNoSendRequest(invalidFormatCard);
         payForm.checkInvalidCardNumberT(invalidFormatCard);
@@ -87,7 +87,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldSendTheFormEmptyAndThenWithTheOwnersData() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var emptyFields = DataHelper.getEmptyFields();
         var approvedInfo = DataHelper.getApprovedCardInfo();
         payForm.fillFormNoSendRequest(emptyFields);
@@ -99,7 +99,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldLeaveTheCardNumberFieldEmpty() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidFormatCard = DataHelper.getInvalidCardInfo();
         payForm.fillFormNoSendRequest(invalidFormatCard);
         payForm.checkInvalidCardNumberT(invalidFormatCard);
@@ -108,7 +108,7 @@ public class PaymentByCardTest {
     // Поле "Месяц"
     @Test
     void shouldCheckTheEmptyMonthField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidMonth = DataHelper.getInvalidMonthInfo1();
         payForm.fillFormNoSendRequest(invalidMonth);
         payForm.checkInvalidMonth(invalidMonth);
@@ -116,7 +116,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldCheckTheInvalidMonthZero() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidMonth = DataHelper.getInvalidMonthZeroInfo();
         payForm.fillFormNoSendRequest(invalidMonth);
         payForm.checkInvalidMonth(invalidMonth);
@@ -124,7 +124,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldOneCharacterInTheMonthField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidMonth = DataHelper.getInvalidMonthInfo2();
         payForm.fillFormNoSendRequest(invalidMonth);
         payForm.checkInvalidMonth(invalidMonth);
@@ -132,7 +132,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterANonExistentMonthInTheField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidMonth = DataHelper.getInvalidMonthInfo();
         payForm.fillFormNoSendRequest(invalidMonth);
         payForm.checkInvalidExpirationDate();
@@ -141,7 +141,7 @@ public class PaymentByCardTest {
     // Поле "Год"
     @Test
     void shouldLeaveTheYearFieldEmpty() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidYear = DataHelper.getInvalidYearInfo1();
         payForm.fillFormNoSendRequest(invalidYear);
         payForm.checkInvalidYearT();
@@ -149,7 +149,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterTwoZerosInTheYearField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var expiredYear = DataHelper.getInvalidYearInfo2();
         payForm.fillFormNoSendRequest(expiredYear);
         payForm.checkCardExpired();
@@ -157,7 +157,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterAYearInTheFieldWithMoreThanTheAllowedPeriod() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidYear = DataHelper.getInvalidYearInfo();
         payForm.fillFormNoSendRequest(invalidYear);
         payForm.checkInvalidExpirationDate();
@@ -165,7 +165,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterTheExpiringYearInTheField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var expiredYear = DataHelper.getExpiredYearInfo();
         payForm.fillFormNoSendRequest(expiredYear);
         payForm.checkCardExpired();
@@ -174,7 +174,7 @@ public class PaymentByCardTest {
     // Поле "Владелец"
     @Test
     void shouldLeaveTheOwnerFieldEmpty() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var requiredField = DataHelper.getInvalidOwnerInfo();
         payForm.fillFormNoSendRequest(requiredField);
         payForm.checkRequiredField();
@@ -182,7 +182,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterTheLastNameFirstAndThenTheFirstNameInTheOwnerField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo1();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -190,7 +190,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterOnlyTheLastNameInTheOwnerField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo2();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -198,7 +198,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterOnlyOneLetterInTheOwnerField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo3();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -206,7 +206,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterOnlyALargeNumberOfLettersInTheOwnerField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo4();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -214,7 +214,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterSpecialCharactersInTheOwnerField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo5();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -222,7 +222,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterLowercaseLettersInTheOwnerField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo6();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -230,7 +230,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterTheNumbersInTheOwnerField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo7();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -238,7 +238,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldCheckTheOwnersDataInCyrillic() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidOwner = DataHelper.getInvalidOwnerInfo8();
         payForm.fillFormNoSendRequest(invalidOwner);
         payForm.checkWrongFormat();
@@ -247,7 +247,7 @@ public class PaymentByCardTest {
     // Поле CVC/CVV
     @Test
     void shouldLeaveTheCVVFieldEmpty() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidCVV = DataHelper.getInvalidCVVInfo();
         payForm.fillFormNoSendRequest(invalidCVV);
         payForm.checkInvalidCVVT();
@@ -255,7 +255,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterTwoNumbersInTheCVVField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidCVV = DataHelper.getInvalidCVVInfo1();
         payForm.fillFormNoSendRequest(invalidCVV);
         payForm.checkInvalidCVVT();
@@ -263,7 +263,7 @@ public class PaymentByCardTest {
 
     @Test
     void shouldEnterOneNumbersInTheCVVField() {
-        var payForm = offerPage.payByDebitCard();
+        var payForm = startingPage.payByDebitCard();
         var invalidCVV = DataHelper.getInvalidCVVInfo2();
         payForm.fillFormNoSendRequest(invalidCVV);
         payForm.checkInvalidCVVT();
