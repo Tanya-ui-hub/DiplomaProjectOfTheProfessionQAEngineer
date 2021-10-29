@@ -30,7 +30,7 @@ dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.26'
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.24'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    testImplementation 'io.qameta.allure:allure-selenide:2.15.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.14.0'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
     testImplementation 'io.rest-assured:rest-assured:4.3.0'
     testImplementation 'org.slf4j:slf4j-simple:1.7.32'
