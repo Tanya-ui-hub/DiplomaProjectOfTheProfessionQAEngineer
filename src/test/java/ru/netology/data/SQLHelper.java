@@ -26,7 +26,7 @@ public class SQLHelper {
 
     public static String getPaymentStatus() {
         var runner = new QueryRunner();
-        var payStatus = "SELECT status FROM payment_entity";
+        var payStatus = "SELECT status FROM payment_entity ORDER BY CREATED DESC LIMIT 1";
 
         try (var connect = getConnection()) {
             var paymentStatus = runner.query(connect, payStatus, new BeanHandler<>(PaymentRequest.class));
@@ -52,7 +52,7 @@ public class SQLHelper {
 
     public static String getCreditStatus() {
         var runner = new QueryRunner();
-        var cStatus = "SELECT status FROM credit_request_entity";
+        var cStatus = "SELECT status FROM credit_request_entity ORDER BY CREATED DESC LIMIT 1";
 
         try (var connect = getConnection()) {
             var creditStatus = runner.query(connect, cStatus, new BeanHandler<>(CreditRequest.class));

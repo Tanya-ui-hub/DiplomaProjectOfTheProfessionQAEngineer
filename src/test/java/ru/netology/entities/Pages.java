@@ -8,7 +8,7 @@ import ru.netology.pages.PaymentPageOnCredit;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class StartingPage {
+public class Pages {
     private SelenideElement buyButton = $(byText("Купить"));
     private SelenideElement creditButton = $(byText("Купить в кредит"));
     private SelenideElement paymentByCard = $(byText("Оплата по карте"));
