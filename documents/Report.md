@@ -9,8 +9,8 @@
 ## Статистика успешных/неуспешных кейсов
 
 ### При подключении к БД MySQL
-> * Успешных кейсов 60.71% (34 кейсов)
-> * Неуспешных кейсов 39.29% (22 кейсов)
+> * Успешных кейсов 64.28% (36 кейсов)
+> * Неуспешных кейсов 35.72% (20 кейсов)
 <details>
    <summary>Report</summary>
 
@@ -20,13 +20,13 @@
 </details>
 
 ### При подключении к БД PostgreSQL
-> * Успешных кейсов 60.71% (34 кейсов)
-> * Неуспешных кейсов 39.29% (22 кейсов)
+> * Успешных кейсов 62.5% (35 кейсов)
+> * Неуспешных кейсов 37.5% (21 кейсов)
 <details>
    <summary>Report</summary>
 
-![ScreenShot](pic/postgeSQL.png)
-![ScreenShot](pic/postgeSQL1.png)
+![ScreenShot](pic/postgreSQL.png)
+![ScreenShot](pic/postgreSQL1.png)
 
 </details>
 

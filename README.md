@@ -1,5 +1,3 @@
-# DiplomaProjectOfTheProfessionQAEngineer [![Build status](https://ci.appveyor.com/api/projects/status/kdh5ky7tuqt4vm38?svg=true)](https://ci.appveyor.com/project/Tanya-ui-hub/diplomaprojectoftheprofessionqaengineer)
-
 # Дипломный проект профессии «Тестировщик»
 
 Дипломный проект представляет собой автоматизацию тестирования комплексного сервиса, взаимодействующего с СУБД и API
@@ -56,8 +54,8 @@
 
 Для запуска автотестов необходимо открыть новую вкладку терминала и ввести следующую команду:
 
-1. "MySQL" - `gradlew test -Dselenide.headless=true -Durlbd=jdbc:mysql://localhost:3306/app --info`
-2. "PostgreSQL" - `gradlew test -Dselenide.headless=true -Durlbd=jdbc:postgresql://localhost:5432/app --info`
+1. "MySQL" - `gradlew test "-Ddb.url=jdbc:mysql://localhost:3306/app" --info`
+2. "PostgreSQL" - `gradlew test "-Ddb.url=jdbc:postgresql://localhost:5432/app" --info`
 
 ## Запуск отчета тестирования
 
